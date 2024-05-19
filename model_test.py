@@ -29,6 +29,7 @@ def render_segmentation():
     geom_ids = geom_ids.astype(np.float64) + 1
     geom_ids = geom_ids / geom_ids.max()
     pixels = 255 * geom_ids
+    pixels = cv2.convertScaleAbs(pixels)
     cv2.imshow('Segmentation', pixels)
     cv2.waitKey(1);
 
