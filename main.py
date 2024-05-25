@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    m = mujoco.MjModel.from_xml_path('shadow_hand/scene_right.xml')
+    m = mujoco.MjModel.from_xml_path('mujoco_models/scene.xml')
     d = mujoco.MjData(m)
 
     depth_renderer = mujoco.Renderer(m)

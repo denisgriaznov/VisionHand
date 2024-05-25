@@ -3,7 +3,7 @@ import mujoco.viewer
 import cv2
 import numpy as np
 
-m = mujoco.MjModel.from_xml_path('shadow_hand/scene_right.xml')
+m = mujoco.MjModel.from_xml_path('mujoco_models/scene.xml')
 d = mujoco.MjData(m)
 
 depth_renderer = mujoco.Renderer(m)
@@ -30,6 +30,7 @@ def render_segmentation():
     geom_ids = geom_ids / geom_ids.max()
     pixels = 255 * geom_ids
     pixels = cv2.convertScaleAbs(pixels)
+    print('Camera resolution: ', pixels.shape)
     cv2.imshow('Segmentation', pixels)
     cv2.waitKey(1);
 
@@ -37,7 +38,7 @@ def render_segmentation():
 with mujoco.viewer.launch_passive(m, d) as viewer:
     cv2.namedWindow("Depth")
     cv2.namedWindow("Segmentation")
-    # Close the viewer automatically after 30 wall-seconds.
+
     start = time.time()
     while True:
         step_start = time.time()
