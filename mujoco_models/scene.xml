@@ -25,5 +25,6 @@
       <geom type="ellipsoid" size="0.03 0.04 0.02" rgba="0.5 0.7 0.5 1" condim="6" priority="1"
         friction="0.5 0.01 0.003"/>
     </body>
+    <camera name="side_camera" pos="0 -0.4 0.5" quat="1 0.4 0 0"/>
   </worldbody>
 </mujoco>
