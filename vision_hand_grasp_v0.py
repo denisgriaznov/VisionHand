@@ -67,7 +67,7 @@ class VisionHandGraspEnv(MujocoEnv, utils.EzPickle):
         return self._get_obs()
 
     def _get_obs(self):
-
+        print(len(self.get_joints_state()))
         obs = {'camera': self.depth_camera,
                'space': np.zeros(10)}
 
@@ -83,3 +83,20 @@ class VisionHandGraspEnv(MujocoEnv, utils.EzPickle):
         render_pixels = np.concatenate((depth_pixels, segmentation_pixels, self.rgb_camera), axis=0)
         render_pixels = np.concatenate((render_pixels, side_pixels), axis=1)
         return render_pixels
+
+    def get_joints_state(self):
+        JOINTS = ["ARTx", "ARTy", "ARTz", "ARRx", "ARRy", "ARRz", "rh_WRJ1", "rh_WRJ2",
+                  "rh_FFJ4", "rh_FFJ3", "rh_FFJ2", "rh_FFJ1",
+                  "rh_MFJ4", "rh_MFJ3", "rh_MFJ2", "rh_MFJ1",
+                  "rh_RFJ4", "rh_RFJ3", "rh_RFJ2", "rh_RFJ1",
+                  "rh_LFJ5", "rh_LFJ4", "rh_LFJ3", "rh_LFJ2", "rh_LFJ1",
+                  "rh_THJ5", "rh_THJ4", "rh_THJ3", "rh_THJ2", "rh_THJ1"]
+        hand_pos = list()
+        hand_vel = list()
+        for joint_ in JOINTS:
+            hand_pos.append(self.data.joint(joint_).qpos[0])
+            hand_vel.append(self.data.joint(joint_).qvel[0])
+
+        pos = np.concatenate((np.array(hand_pos), np.array(self.data.joint("target").qpos)), axis=0)
+        vel = np.concatenate((np.array(hand_vel), np.array(self.data.joint("target").qvel)), axis=0)
+        return np.concatenate((pos, vel), axis=0)

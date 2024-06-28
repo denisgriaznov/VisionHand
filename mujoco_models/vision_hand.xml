@@ -95,7 +95,7 @@
   </asset>
 
   <worldbody>
-    <body name="rh_forearm" childclass="right_hand" quat="0 -1 0 1" pos="0.3 0 0.2" >
+    <body name="rh_forearm" childclass="right_hand" quat="0 -1 0 1" pos="0.3 0 0.1" >
       <inertial mass="3" pos="0 0 0.09" diaginertia="0.0138 0.0138 0.00744"/>
       <joint name="ARTx" pos="0 0 0" axis="1 0 0" type="slide" range="-1 1" damping="30" />
       <joint name="ARTy" pos="0 0 0" axis="0 1 0" type="slide" range="-1 1" damping="30" />

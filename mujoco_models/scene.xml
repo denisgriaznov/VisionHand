@@ -2,7 +2,7 @@
   <include file="vision_hand.xml"/>
 
   <statistic extent="0.3" center="0.3 0 0"/>
-
+  <option gravity="0 0 -9.8"/>
   <visual>
     <rgba haze="0.15 0.25 0.35 1"/>
     <quality shadowsize="8192"/>
@@ -20,9 +20,9 @@
     <light pos="0 0 1"/>
     <light pos="0.3 0 1.5" dir="0 0 -1" directional="true"/>
     <geom name="floor" pos="0 0 -0.1" size="0 0 0.05" type="plane" material="groundplane"/>
-    <body name="target" pos="0 0 0.09">
+    <body name="target" pos="0 0 -0.07">
       <freejoint name="target"/>
-      <geom type="ellipsoid" size="0.03 0.04 0.02" rgba="0.5 0.7 0.5 1" condim="6" priority="1"
+      <geom name="target" type="ellipsoid" size="0.03 0.04 0.02" rgba="0.5 0.7 0.5 1" condim="6" priority="1"
         friction="0.5 0.01 0.003"/>
     </body>
     <camera name="side_camera" pos="0 -0.4 0.5" quat="1 0.4 0 0"/>
