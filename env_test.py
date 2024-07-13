@@ -8,7 +8,6 @@ obs, info = env.reset()
 for _ in range(500):
     action = np.random.rand(26) / 100
     obs, reward, done, truncated, info = env.step(action)
-    #print(reward)
     print(obs)
     if _ % 5 == 0:
         cv2.imshow("image", env.render())
