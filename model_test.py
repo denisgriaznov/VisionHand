@@ -41,7 +41,7 @@ with mujoco.viewer.launch_passive(m, d) as viewer:
         #         mujoco.mj_contactForce(m, d, i, force)
         #         total_force = total_force - force
         # print(total_force)
-
+        #print(d.body("rh_palm").xpos)
         time_until_next_step = m.opt.timestep - (time.time() - step_start)
         if time_until_next_step > 0:
             time.sleep(time_until_next_step)

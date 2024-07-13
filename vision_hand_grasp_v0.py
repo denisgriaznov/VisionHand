@@ -44,8 +44,7 @@ class VisionHandGraspEnv(MujocoEnv, utils.EzPickle):
         self.rgb_camera = np.zeros((240, 320))
 
     def step(self, a):
-        print(self.data.joint("target").qpos)
-        reward = 1.0
+        #print([np.abs(0.05 - self.data.joint("target").qpos[2]), self.data.joint("target").qpos[2]])
         self.do_simulation(a, self.frame_skip)
         self.step_number += 1
 
@@ -57,6 +56,9 @@ class VisionHandGraspEnv(MujocoEnv, utils.EzPickle):
         self.segmentation_camera = self.segmentation_renderer.render()
         self.rgb_camera = self.rgb_renderer.render()
 
+        r_pick = -np.abs(self.data.body("rh_palm").xpos[2] - self.data.joint("target").qpos[2])
+        r_up = -np.abs(0.05 - self.data.joint("target").qpos[2])
+        reward = r_pick + r_up * 4
         obs = self._get_obs()
         # done = bool(not np.isfinite(obs).all() or (obs[2] < 0))
         done = False
