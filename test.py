@@ -2,7 +2,7 @@ from vision_hand_grasp_v0 import VisionHandGraspEnv
 from stable_baselines3 import PPO
 import cv2
 
-model = PPO.load("ppo_vision_hand_grasp")
+model = PPO.load("ppo_vision_hand_grasp_coordinates")
 
 env = VisionHandGraspEnv(obs_mode='coordinates')
 obs, info = env.reset()
