@@ -17,7 +17,7 @@ class VisionHandGraspEnv(MujocoEnv, utils.EzPickle):
         "render_fps": 100,
     }
 
-    def __init__(self, episode_len=500, obs_mode='coordinates', **kwargs):
+    def __init__(self, episode_len=500, obs_mode='coordinates', path=os.path.abspath("mujoco_models/scene.xml"), **kwargs):
         utils.EzPickle.__init__(self, **kwargs)
 
         # check if obs mode is valid
@@ -35,7 +35,7 @@ class VisionHandGraspEnv(MujocoEnv, utils.EzPickle):
 
         MujocoEnv.__init__(
             self,
-            os.path.abspath("mujoco_models/scene.xml"),
+            path,
             5,
             observation_space=self.observation_space,
             render_mode='RGB'
