@@ -18,7 +18,7 @@ def create_parser():
 if __name__ == "__main__":
     parser = create_parser()
     args = parser.parse_args()
-Ar    obs_mode = args.obs_mode
+    obs_mode = args.obs_mode
     env = VisionHandGraspEnv(obs_mode=obs_mode)
 
     model = PPO("MlpPolicy", env, verbose=1)
